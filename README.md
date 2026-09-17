@@ -34,6 +34,8 @@ A aplicação sobe por padrão em `http://127.0.0.1:5000`.
 | **Dev Lead** | Raiza Antoneli | Define a arquitetura e os padrões de código, desenvolve o núcleo da aplicação, revisa os Pull Requests e resolve impedimentos técnicos |
 | **Product Owner / CIO** | Guilherme Souto | Levanta os requisitos, prioriza o backlog, valida as entregas e faz a ponte com as partes interessadas |
 | **QA / Auditoria** | Enrico do Carmo | Elabora e executa os testes, registra bugs, faz testes de regressão e audita o cumprimento dos padrões definidos |
+| **UX/UI Designer** | Luana Alcântara | Desenha os fluxos de navegação e os protótipos das telas, mantém o design system, cuida da acessibilidade e acompanha a fidelidade da implementação |
+| **DevOps / Infraestrutura** | Marcus Aurélios | Configura os ambientes e o pipeline de CI/CD, automatiza builds e deploys, monitora a aplicação e cuida de backups e segurança de acesso |
 
 ### Raiza Antoneli — Dev Lead
 
