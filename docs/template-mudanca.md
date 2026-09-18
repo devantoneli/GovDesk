@@ -1,7 +1,5 @@
 # Template de Solicitação de Mudança - Projeto GovDesk
 
-# Solicitação de Mudança
-
 ------------------------------------------------
 ## 1. Cadastro de dados pessoais e sensíveis
 ## O que muda 
