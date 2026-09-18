@@ -11,7 +11,7 @@ Adicionar ao sistema uma classificação dos dados dos funcionários entre dados
 (motivo — que problema resolve ou objetivo atende) 
 Facilitar a identificação e o tratamento adequado das informações armazenadas no sistema, aumentando a segurança dos dados dos funcionários.
 ## Quem solicita 
-(nome) 
+(nome)
 DevOps / Infraestrutura	- Marcus Aurélios
 ## Quem aprova 
 (nome do Accountable responsável por liberar) 
