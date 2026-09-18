@@ -69,6 +69,8 @@ Dono do Produto / CIO - Guilherme Souto
 ## Impacto / Risco 
 O armazenamento dos registros de auditoria pode aumentar o volume de dados do sistema. Também existe o risco de registros incompletos. Serão realizados testes de inclusão, alteração e exclusão de dados para verificar se as operações estão sendo registradas corretamente.
 
+## Equipe e papéis
+
 |1. Cadastro de dados pessoais e sensíveis|
 |-------|-------------|
 | **O que muda ** | Adicionar ao sistema uma classificação dos dados dos funcionários entre dados pessoais, dados pessoais sensíveis e dados não pessoais. |
