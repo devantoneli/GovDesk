@@ -68,13 +68,3 @@ Controle de Qualidade / Auditório - Enrico do Carmo
 Dono do Produto / CIO - Guilherme Souto
 ## Impacto / Risco 
 O armazenamento dos registros de auditoria pode aumentar o volume de dados do sistema. Também existe o risco de registros incompletos. Serão realizados testes de inclusão, alteração e exclusão de dados para verificar se as operações estão sendo registradas corretamente.
-
-## Equipe e papéis
-
-|1. Cadastro de dados pessoais e sensíveis|
-|-------|-------------|
-| **O que muda ** | Adicionar ao sistema uma classificação dos dados dos funcionários entre dados pessoais, dados pessoais sensíveis e dados não pessoais. |
-| **Por que** | Facilitar a identificação e o tratamento adequado das informações armazenadas no sistema, aumentando a segurança dos dados dos funcionários. | 
-| **Quem solicita** | DevOps / Infraestrutura	- Marcus Aurélios | 
-| **UX/UI Designer** | Luana Alcântara | 
-| **Impacto / Risco** | Pode ocorrer classificação incorreta de algum dado ou acesso indevido às informações. Serão realizados testes de classificação e de permissões antes da implantação. |
