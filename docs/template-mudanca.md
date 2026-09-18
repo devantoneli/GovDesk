@@ -3,7 +3,7 @@
 # Solicitação de Mudança
 
 ------------------------------------------------
-1. Cadastro de dados pessoais e sensíveis
+## 1. Cadastro de dados pessoais e sensíveis
 ## O que muda 
 Adicionar ao sistema uma classificação dos dados dos funcionários entre dados pessoais, dados pessoais sensíveis e dados não pessoais.
 ## Por que 
@@ -17,7 +17,7 @@ Pode ocorrer classificação incorreta de algum dado ou acesso indevido às info
 
 ------------------------------------------------
 
-2. Controle de acesso dos funcionários
+## 2. Controle de acesso dos funcionários
 ## O que muda 
 Implementar diferentes níveis de acesso no sistema, permitindo que funcionários, gestores e administradores visualizem apenas as informações necessárias para suas funções.
 ## Por que 
@@ -31,7 +31,7 @@ Uma configuração incorreta pode impedir usuários autorizados de acessar infor
 
 ------------------------------------------------
 
-3. Alteração do cadastro de funcionários
+## 3. Alteração do cadastro de funcionários
 ## O que muda 
 Adicionar novos campos ao cadastro de funcionários, como telefone, endereço, cargo, departamento e data de admissão
 ## Por que 
@@ -45,7 +45,7 @@ A inclusão dos novos campos pode causar problemas de validação ou inconsistê
 
 ------------------------------------------------
 
-4. Relatório de funcionários
+## 4. Relatório de funcionários
 ## O que muda 
 Criar um novo relatório que apresente informações agregadas sobre os funcionários, como quantidade de funcionários por departamento, cargos e quantidade de admissões e desligamentos.
 ## Por que 
@@ -59,7 +59,7 @@ O relatório pode apresentar informações incorretas caso os dados utilizados e
 
 ------------------------------------------------
 
-5. Registro de alterações no sistema
+## 5. Registro de alterações no sistema
 ## O que muda 
 Implementar um registro de auditoria para armazenar informações sobre alterações realizadas nos dados dos funcionários, incluindo usuário responsável, data, horário e tipo de alteração.
 ## Por que 
