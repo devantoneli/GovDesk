@@ -33,18 +33,14 @@ Uma configuração incorreta pode impedir usuários autorizados de acessar infor
 
 3. Alteração do cadastro de funcionários
 ## O que muda 
-(descrição objetiva da alteração) 
 Adicionar novos campos ao cadastro de funcionários, como telefone, endereço, cargo, departamento e data de admissão
 ## Por que 
 Permitir que o sistema armazene informações necessárias para melhorar o gerenciamento dos funcionários e facilitar os processos administrativos do RH.
 ## Quem solicita 
-(nome) 
 Controle de Qualidade / Auditório - Enrico do Carmo
 ## Quem aprova 
-(nome do Accountable responsável por liberar) 
 Dono do Produto / CIO - Guilherme Souto
 ## Impacto / Risco 
-(o que pode dar errado e como será verificado antes de subir) 
 A inclusão dos novos campos pode causar problemas de validação ou inconsistências nos cadastros existentes. Serão realizados testes de cadastro, edição e consulta antes da implantação.
 
 ------------------------------------------------
