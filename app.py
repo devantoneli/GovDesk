@@ -1,7 +1,8 @@
 import re
 import unicodedata
+from datetime import datetime
 
-from flask import Flask, render_template, request
+from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
 
@@ -104,6 +105,37 @@ def index():
         status_atual=status_atual,
         prioridade_atual=prioridade_atual,
     )
+
+
+@app.route("/novo", methods=["GET", "POST"])
+def novo():
+    erro = None
+    if request.method == "POST":
+        titulo = request.form.get("titulo", "").strip()
+        descricao = request.form.get("descricao", "").strip()
+        solicitante = request.form.get("solicitante", "").strip()
+        prioridade = request.form.get("prioridade", "Média")
+
+        if not titulo or not solicitante:
+            erro = "Preencha o título e o nome do solicitante."
+        elif prioridade not in PRIORIDADES:
+            erro = "Prioridade inválida."
+        else:
+            novo_id = max((c["id"] for c in CHAMADOS), default=0) + 1
+            CHAMADOS.append(
+                {
+                    "id": novo_id,
+                    "titulo": titulo,
+                    "descricao": descricao,
+                    "solicitante": solicitante,
+                    "prioridade": prioridade,
+                    "status": "Aberto",
+                    "aberto_em": datetime.now().strftime("%d/%m"),
+                }
+            )
+            return redirect(url_for("index"))
+
+    return render_template("novo.html", erro=erro, prioridades=PRIORIDADES, dados=request.form)
 
 
 @app.route("/sobre")
