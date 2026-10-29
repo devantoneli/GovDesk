@@ -7,6 +7,14 @@
     {{ total }} chamados na fila, {{ abertos }} ainda sem primeira resposta.
   </p>
 
+  <!-- ALTERAÇÃO: Adicionado o botão/link "+ Novo chamado" apontando para a rota /novo (index.html) -->
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px;">
+    <p style="margin: 0;">
+      {{ total }} chamados na fila, {{ abertos }} ainda sem primeira resposta.
+    </p>
+    <a href="/novo" class="btn-novo">+ Novo chamado</a>
+  </div>
+
   <div class="filtros">
     <span>Status</span>
     <a class="chip" href="{{ url_for('index', prioridade=prioridade_atual or None) }}"
@@ -39,7 +47,7 @@
       <thead>
         <tr>
           <th scope="col">ID</th>
-          <th scope="col">Chamado</th>
+          <th scope="col">Chamado</th> 
           <th scope="col">Prioridade</th>
           <th scope="col">Status</th>
           <th scope="col" class="esconde-mobile">Aberto em</th>
