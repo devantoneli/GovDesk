@@ -291,6 +291,8 @@
     <nav>
       <a href="/" {% if request.path == '/' %}aria-current="page"{% endif %}>Chamados</a>
       <a href="/sobre" {% if request.path == '/sobre' %}aria-current="page"{% endif %}>Sobre o projeto</a>
+      <!-- ALTERAÇÃO: Adicionado o link "Novo chamado" no menu de navegação (base.html) -->
+      <a href="/novo" {% if request.path == '/novo' %}aria-current="page"{% endif %}>Novo chamado</a>
     </nav>
   </header>
 
