@@ -3,16 +3,11 @@
 {% block titulo %}Chamados{% endblock %}
 
 {% block content %}
-  <p>
-    {{ total }} chamados na fila, {{ abertos }} ainda sem primeira resposta.
-  </p>
-
-  <!-- ALTERAÇÃO: Adicionado o botão/link "+ Novo chamado" apontando para a rota /novo (index.html) -->
   <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px;">
     <p style="margin: 0;">
       {{ total }} chamados na fila, {{ abertos }} ainda sem primeira resposta.
     </p>
-    <a href="novo.html" class="btn-novo">+ Novo chamado</a>
+    <a href="/novo" class="btn-novo">+ Novo chamado</a>
   </div>
 
   <div class="filtros">
@@ -75,7 +70,7 @@
   {% else %}
     <p class="vazio">
       Nenhum chamado com esses filtros.
-      <a href="{{ url_for('index') }}">Ver a fila inteira</a>.
+      <a href="/">Ver a fila inteira</a>.
     </p>
   {% endif %}
 
