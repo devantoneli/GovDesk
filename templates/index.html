@@ -3,11 +3,12 @@
 {% block titulo %}Chamados{% endblock %}
 
 {% block content %}
-  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px;">
-    <p style="margin: 0;">
-      {{ total }} chamados na fila, {{ abertos }} ainda sem primeira resposta.
-    </p>
-    <a href="novo.html" class="btn-novo">+ Novo chamado</a>
+  <div class="barra-topo">
+    <div>
+      <h1 class="titulo-pagina">Fila de chamados</h1>
+      <p class="subtitulo">{{ total }} chamados na fila, {{ abertos }} ainda sem primeira resposta.</p>
+    </div>
+    <a href="{{ url_for('novo') }}" class="btn-novo">+ Novo chamado</a>
   </div>
 
   <div class="filtros">
@@ -37,45 +38,54 @@
   </div>
 
   {% if chamados %}
-    <table>
-      <caption>Ordenados por prioridade e depois pelos mais recentes.</caption>
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Chamado</th> 
-          <th scope="col">Prioridade</th>
-          <th scope="col">Status</th>
-          <th scope="col" class="esconde-mobile">Aberto em</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for c in chamados %}
-          <tr class="prioridade-{{ c.prioridade | slug }}">
-            <td class="id">#{{ c.id }}</td>
-            <td>
-              <span class="titulo">{{ c.titulo }}</span>
-              <span class="solicitante">{{ c.solicitante }}</span>
-            </td>
-            <td>
-              <span class="prioridade {{ c.prioridade | slug }}">{{ c.prioridade }}</span>
-            </td>
-            <td>
-              <span class="status {{ c.status | slug }}">{{ c.status }}</span>
-            </td>
-            <td class="data esconde-mobile">{{ c.aberto_em }}</td>
+    <div class="tabela-wrap">
+      <table>
+        <caption>Ordenados por prioridade e depois pelos mais recentes.</caption>
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Chamado</th>
+            <th scope="col">Prioridade</th>
+            <th scope="col">Status</th>
+            <th scope="col" class="esconde-mobile">Aberto em</th>
+            <th scope="col"><span class="sr">Ação</span></th>
           </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {% for c in chamados %}
+            <tr class="prioridade-{{ c.prioridade | slug }}">
+              <td class="id">#{{ c.id }}</td>
+              <td>
+                <a class="titulo" href="{{ url_for('detalhe', id_=c.id) }}">{{ c.titulo }}</a>
+                <span class="solicitante">{{ c.solicitante }}</span>
+              </td>
+              <td><span class="prioridade {{ c.prioridade | slug }}">{{ c.prioridade }}</span></td>
+              <td><span class="status {{ c.status | slug }}">{{ c.status }}</span></td>
+              <td class="data esconde-mobile">{{ c.aberto_em | dia }}</td>
+              <td class="acao">
+                {% if c.status in acoes %}
+                  <form method="post" action="{{ url_for('avancar', id_=c.id) }}">
+                    <input type="hidden" name="voltar" value="{{ request.full_path.rstrip('?') }}">
+                    <button type="submit" class="btn btn-sec btn-mini">{{ acoes[c.status] }}</button>
+                  </form>
+                {% else %}
+                  <span class="sem-acao">Finalizado</span>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   {% else %}
     <p class="vazio">
       Nenhum chamado com esses filtros.
-      <a href="/">Ver a fila inteira</a>.
+      <a href="{{ url_for('index') }}">Ver a fila inteira</a>.
     </p>
   {% endif %}
 
   <p class="nota">
-    Semana 1: a fila ainda é uma lista fixa no arquivo <code>app.py</code>. Na semana 2
-    ela vira cadastro em banco, com abertura de chamado e atribuição de responsável.
+    A fila usa dados fictícios mantidos em memória: ao reiniciar o servidor ela volta ao estado inicial.
+    Cada mudança de status fica registrada no histórico do chamado (rastreabilidade).
   </p>
 {% endblock %}

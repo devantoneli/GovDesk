@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block titulo %}Governança{% endblock %}
+
+{% block content %}
+  <h1 class="titulo-pagina">Governança do GovDesk</h1>
+  <p class="subtitulo">
+    Como a estratégia, a privacidade, as responsabilidades e o processo se conectam — e onde cada coisa aparece no sistema.
+    A documentação completa está na pasta <code>docs/</code> do repositório.
+  </p>
+
+  <div class="grade">
+    <article class="cartao">
+      <h3>PETI — por quê</h3>
+      <p>Objetivo de negócio: acabar com a perda de prazos e a falta de rastreio nos chamados de RH. Meta: MTTR abaixo de 24 h.</p>
+      <p><strong>No sistema:</strong> página de Indicadores.</p>
+      <p class="tag-doc"><code>docs/peti.md</code></p>
+    </article>
+    <article class="cartao">
+      <h3>LGPD — com que cuidado</h3>
+      <p>Coletamos o mínimo, com finalidade e base legal definidas. Dado sensível não entra na fila geral.</p>
+      <p><strong>No sistema:</strong> aviso e ciência obrigatória no formulário; bloqueio de CPF no texto.</p>
+      <p class="tag-doc"><code>docs/lgpd.md</code></p>
+    </article>
+    <article class="cartao">
+      <h3>RACI — quem responde</h3>
+      <p>Cada atividade tem um único responsável final (A). Os papéis do RACI são as raias do processo.</p>
+      <p><strong>No sistema:</strong> a cada etapa do chamado há um papel dono.</p>
+      <p class="tag-doc"><code>docs/raci.md</code></p>
+    </article>
+    <article class="cartao">
+      <h3>Processo — como flui</h3>
+      <p>Abrir → triar → atender → validar → concluir. Mapa AS-IS (e-mail) e TO-BE (GovDesk) em BPMN.</p>
+      <p><strong>No sistema:</strong> status Aberto → Em andamento → Concluído, com histórico.</p>
+      <p class="tag-doc"><code>docs/processo-chamados.md</code></p>
+    </article>
+    <article class="cartao">
+      <h3>Mudanças — como evolui</h3>
+      <p>Toda alteração relevante passa por solicitação com motivo, solicitante, aprovador e risco.</p>
+      <p><strong>No sistema:</strong> histórico de cada chamado registra quem e quando mudou o status.</p>
+      <p class="tag-doc"><code>docs/template-mudanca.md</code></p>
+    </article>
+    <article class="cartao">
+      <h3>Melhoria contínua — para onde vai</h3>
+      <p>BSC, não conformidades, maturidade e roadmap, revisados a cada ciclo PDCA.</p>
+      <p><strong>No sistema:</strong> indicadores alimentam a perspectiva de processos do BSC.</p>
+      <p class="tag-doc"><code>docs/melhoria-continua.md</code></p>
+    </article>
+  </div>
+{% endblock %}

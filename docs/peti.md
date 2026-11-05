@@ -1,13 +1,26 @@
-# PETI — Plano Estratégico de TI do Projeto 
+# PETI — Plano Estratégico de TI do Projeto
 
-## Objetivo de Negócio 
+## Objetivo de negócio
 Eliminar o gargalo e a lentidão na alocação de novos colaboradores e na gestão de solicitações internas de RH, resolvendo a perda de prazos e a falta de rastreabilidade nos chamados de onboarding e suporte aos funcionários.
 
-## Objetivo de TI 
-Automatizar o fluxo de atendimento por meio de um sistema web com painel de tickets, atribuição automatizada de responsáveis e notificações em tempo real para os chamados de RH.
+## Objetivo de TI
+Automatizar o fluxo de atendimento por meio de um sistema web com fila de chamados, controle de status, validação de entrada e indicadores de desempenho, com atribuição automática de responsáveis e notificações como evolução futura.
 
-## Indicador de Sucesso 
-Reduzir o tempo médio de atendimento (MTTR) dos chamados de RH para menos de 24 horas e alcançar uma taxa de resolução no primeiro contato (FCR) superior a 80% até o final do sprint.
+## Indicadores de sucesso
 
-## Prioridade da Semana 
-Implementar o módulo de abertura e listagem de chamados com controle de status (Aberto, Em Andamento, Concluído) e filtros básicos por prioridade.
+| Indicador | Meta | Situação na entrega final |
+|-----------|------|----------------------------|
+| MTTR — tempo médio de atendimento | menos de 24 h | **Medido** na página Indicadores |
+| FCR — resolução no primeiro contato | acima de 80% | Não medido (depende de registrar retornos do solicitante; ver backlog futuro) |
+
+## Alinhamento estratégia → TI → sistema
+
+| Estratégia (negócio) | Resposta de TI | Onde está no GovDesk |
+|----------------------|----------------|-----------------------|
+| Não perder prazos | Fila priorizada e prazos medidos | Lista ordenada, indicador "pendentes há mais de 24 h" |
+| Ter rastreabilidade | Histórico de cada mudança de status | Detalhe do chamado |
+| Tratar dados com responsabilidade | LGPD by design | Aviso, ciência obrigatória, bloqueio de CPF |
+| Responsabilidades claras | RACI e processo BPMN | [raci.md](raci.md), [processo-chamados.md](processo-chamados.md) |
+
+## Prioridade da fase final
+Consolidar abertura, listagem, avanço de status e indicadores, com a governança documentada e coerente (PETI, LGPD, RACI, processo, mudanças e melhoria contínua).

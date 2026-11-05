@@ -8,296 +8,42 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --navy:        #1E2761;
-      --navy-claro:  #4A55A0;
-      --ambar:       #F0A93F;
-      --tinta:       #2A2E3A;
-      --tinta-fraca: #6B7280;
-      --papel:       #FFFFFF;
-      --nevoa:       #F4F6FB;
-      --linha:       #E1E6F2;
-
-      --alta:  #B3261E;
-      --media: #C77B08;
-      --baixa: #8B93A7;
-
-      --aberto-fundo:  #FDECEA;  --aberto-texto:  #8C1D18;
-      --andamento-fundo:#FBF0DC; --andamento-texto:#8A5A00;
-      --concluido-fundo:#E7F2E9;  --concluido-texto:#1F5A2E;
-
-      --raio: 6px;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-      font-size: 15px;
-      line-height: 1.55;
-      color: var(--tinta);
-      background: var(--papel);
-      max-width: 880px;
-      margin: 0 auto;
-      padding: 32px 20px 64px;
-    }
-
-    a { color: var(--navy); }
-
-    :focus-visible {
-      outline: 2px solid var(--navy-claro);
-      outline-offset: 2px;
-      border-radius: 3px;
-    }
-
-    /* ---------- cabeçalho ---------- */
-    header {
-      border-bottom: 3px solid var(--ambar);
-      padding-bottom: 14px;
-      margin-bottom: 28px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 8px 24px;
-    }
-
-    header h1 {
-      font-size: 24px;
-      font-weight: 600;
-      letter-spacing: -0.015em;
-      color: var(--navy);
-      margin: 0;
-    }
-
-    header h1 span {
-      display: block;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0;
-      color: var(--tinta-fraca);
-    }
-
-    nav { display: flex; gap: 20px; }
-
-    nav a {
-      color: var(--tinta-fraca);
-      text-decoration: none;
-      font-weight: 500;
-      padding-bottom: 2px;
-    }
-
-    nav a:hover { color: var(--navy); }
-
-    nav a[aria-current="page"] {
-      color: var(--navy);
-      box-shadow: inset 0 -2px 0 var(--navy);
-    }
-
-    /* ---------- tabela ---------- */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-
-    caption {
-      caption-side: top;
-      text-align: left;
-      color: var(--tinta-fraca);
-      font-size: 13px;
-      padding-bottom: 8px;
-    }
-
-    th, td {
-      text-align: left;
-      padding: 11px 12px;
-      border-bottom: 1px solid var(--linha);
-      vertical-align: top;
-    }
-
-    thead th {
-      background: var(--nevoa);
-      color: var(--navy);
-      font-size: 13px;
-      font-weight: 600;
-      border-bottom: 1px solid var(--linha);
-    }
-
-    tbody tr:hover { background: #FAFBFE; }
-
-    /* a faixa colorida na borda esquerda é a prioridade do chamado */
-    tbody td:first-child { border-left: 3px solid transparent; }
-    tr.prioridade-alta  td:first-child { border-left-color: var(--alta); }
-    tr.prioridade-media td:first-child { border-left-color: var(--media); }
-    tr.prioridade-baixa td:first-child { border-left-color: var(--baixa); }
-
-    .id {
-      font-variant-numeric: tabular-nums;
-      color: var(--tinta-fraca);
-      white-space: nowrap;
-    }
-
-    .titulo { font-weight: 500; }
-
-    .solicitante {
-      display: block;
-      font-size: 13px;
-      color: var(--tinta-fraca);
-    }
-
-    .data { color: var(--tinta-fraca); white-space: nowrap; }
-
-    /* ---------- etiquetas ---------- */
-    .status {
-      display: inline-block;
-      padding: 2px 10px;
-      border-radius: 999px;
-      font-size: 12.5px;
-      font-weight: 500;
-      white-space: nowrap;
-    }
-
-    .status.aberto        { background: var(--aberto-fundo);    color: var(--aberto-texto); }
-    .status.em-andamento  { background: var(--andamento-fundo); color: var(--andamento-texto); }
-    .status.concluido     { background: var(--concluido-fundo); color: var(--concluido-texto); }
-
-    .prioridade { white-space: nowrap; font-size: 13.5px; }
-
-    .prioridade::before {
-      content: "";
-      display: inline-block;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      margin-right: 7px;
-      vertical-align: 1px;
-      background: var(--baixa);
-    }
-
-    .prioridade.alta::before  { background: var(--alta); }
-    .prioridade.media::before { background: var(--media); }
-
-    /* ---------- filtros ---------- */
-    .filtros {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-
-    .filtros + .filtros { margin-top: 8px; }
-
-    .filtros span {
-      font-size: 13px;
-      color: var(--tinta-fraca);
-      width: 76px;
-    }
-
-    .chip {
-      display: inline-block;
-      padding: 4px 12px;
-      border: 1px solid var(--linha);
-      border-radius: var(--raio);
-      background: var(--papel);
-      color: var(--tinta);
-      font-size: 13.5px;
-      text-decoration: none;
-    }
-
-    .chip:hover { border-color: var(--navy-claro); }
-
-    .chip[aria-current="true"] {
-      background: var(--navy);
-      border-color: var(--navy);
-      color: #fff;
-    }
-
-    .chip b { font-weight: 500; opacity: 0.65; }
-    .chip[aria-current="true"] b { opacity: 0.8; }
-
-    /* ---------- texto corrido ---------- */
-    main h2 {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--navy);
-      margin: 30px 0 6px;
-    }
-
-    main h2:first-child { margin-top: 0; }
-
-    main p, main ul { max-width: 62ch; }
-    main p { margin: 0 0 14px; }
-    main ul { margin: 0 0 14px; padding-left: 18px; }
-    main li { margin-bottom: 5px; }
-
-    .abertura {
-      font-size: 17px;
-      line-height: 1.5;
-      color: var(--tinta);
-      max-width: 54ch;
-    }
-
-    /* mesma faixa da tabela, agora marcando as metas do projeto */
-    .metas { list-style: none; padding-left: 0; }
-
-    .metas li {
-      padding-left: 14px;
-      border-left: 3px solid var(--ambar);
-      margin-bottom: 12px;
-    }
-
-    .metas strong {
-      display: block;
-      font-weight: 600;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .metas span { font-size: 13.5px; color: var(--tinta-fraca); }
-
-    /* ---------- estado vazio e rodapé ---------- */
-    .vazio {
-      border: 1px dashed var(--linha);
-      border-radius: var(--raio);
-      padding: 28px 20px;
-      margin-top: 20px;
-      text-align: center;
-      color: var(--tinta-fraca);
-    }
-
-    .nota {
-      margin-top: 32px;
-      padding-top: 14px;
-      border-top: 1px solid var(--linha);
-      font-size: 13px;
-      color: var(--tinta-fraca);
-      max-width: 62ch;
-    }
-
-    @media (max-width: 640px) {
-      body { padding: 20px 14px 48px; }
-      .filtros span { width: 100%; }
-      .esconde-mobile { display: none; }
-      th, td { padding: 10px 8px; }
-    }
-  </style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/govdesk.css') }}">
 </head>
 <body>
-  <header>
-    <h1>GovDesk<span>Chamados de RH e onboarding</span></h1>
-    <nav>
-      <a href="index.html" {% if request.path == '/' %}aria-current="page"{% endif %}>Chamados</a>
-      <a href="sobre.html" {% if request.path == '/sobre' %}aria-current="page"{% endif %}>Sobre o projeto</a>
-      <!-- ALTERAÇÃO: Adicionado o link "Novo chamado" no menu de navegação (base.html) -->
-      <a href="novo.html" {% if request.path == '/novo' %}aria-current="page"{% endif %}>Novo chamado</a>
-    </nav>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topo">
+    <div class="topo-interno">
+      <a class="marca" href="{{ url_for('index') }}">
+        <span class="marca-icone" aria-hidden="true">G</span>
+        <span><strong>GovDesk</strong><small>Chamados de RH e onboarding</small></span>
+      </a>
+      <nav aria-label="Principal">
+        <a href="{{ url_for('index') }}" {% if request.endpoint in ('index', 'detalhe') %}aria-current="page"{% endif %}>Chamados</a>
+        <a href="{{ url_for('novo') }}" {% if request.endpoint == 'novo' %}aria-current="page"{% endif %}>Novo chamado</a>
+        <a href="{{ url_for('painel') }}" {% if request.endpoint == 'painel' %}aria-current="page"{% endif %}>Indicadores</a>
+        <a href="{{ url_for('governanca') }}" {% if request.endpoint == 'governanca' %}aria-current="page"{% endif %}>Governança</a>
+        <a href="{{ url_for('sobre') }}" {% if request.endpoint == 'sobre' %}aria-current="page"{% endif %}>Sobre</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
+  <main id="conteudo">
+    {% with mensagens = get_flashed_messages() %}
+      {% for m in mensagens %}
+        <p class="aviso aviso-ok" role="status">{{ m }}</p>
+      {% endfor %}
+    {% endwith %}
+
     {% block content %}{% endblock %}
   </main>
+
+  <footer class="rodape">
+    <div class="rodape-interno">
+      <span>GovDesk · projeto acadêmico Fatec — Gestão e Governança de TI (ITI004)</span>
+      <span>Todos os dados exibidos são fictícios. Tratamento de dados conforme a LGPD (Lei 13.709/2018).</span>
+    </div>
+  </footer>
 </body>
 </html>

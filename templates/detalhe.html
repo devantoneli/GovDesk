@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block titulo %}Chamado #{{ c.id }}{% endblock %}
+
+{% block content %}
+  <p class="nota" style="margin:0 0 10px;"><a href="{{ url_for('index') }}">← Voltar à fila</a></p>
+  <h1 class="titulo-pagina">#{{ c.id }} · {{ c.titulo }}</h1>
+  <p class="subtitulo">
+    <span class="status {{ c.status | slug }}">{{ c.status }}</span>
+    &nbsp;<span class="prioridade {{ c.prioridade | slug }}">Prioridade {{ c.prioridade | lower }}</span>
+  </p>
+
+  <div class="detalhe-grid">
+    <section class="cartao" aria-labelledby="h-desc">
+      <h2 id="h-desc">Descrição</h2>
+      <p>{{ c.descricao or 'Sem descrição informada.' }}</p>
+
+      <dl class="meta">
+        <dt>Solicitante</dt><dd>{{ c.solicitante }}</dd>
+        <dt>Aberto em</dt><dd>{{ c.aberto_em | datahora }}</dd>
+        {% if c.concluido_em %}<dt>Concluído em</dt><dd>{{ c.concluido_em | datahora }}</dd>{% endif %}
+      </dl>
+
+      {% if c.status in acoes %}
+        <form method="post" action="{{ url_for('avancar', id_=c.id) }}" style="margin-top:20px;">
+          <input type="hidden" name="voltar" value="{{ url_for('detalhe', id_=c.id) }}">
+          <button type="submit" class="btn btn-ambar">{{ acoes[c.status] }}</button>
+        </form>
+      {% endif %}
+    </section>
+
+    <section class="cartao" aria-labelledby="h-hist">
+      <h2 id="h-hist">Histórico</h2>
+      <ol class="linha-tempo">
+        {% for quando, evento in c.historico|reverse %}
+          <li><time>{{ quando | datahora }}</time>{{ evento }}</li>
+        {% endfor %}
+      </ol>
+    </section>
+  </div>
+{% endblock %}

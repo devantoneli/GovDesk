@@ -3,6 +3,7 @@
 {% block titulo %}Sobre o projeto{% endblock %}
 
 {% block content %}
+  <h1 class="titulo-pagina">Sobre o projeto</h1>
   <p class="abertura">
     O GovDesk existe para tirar as solicitações de RH do e-mail e colocá-las numa
     fila que todo mundo enxerga.
@@ -10,17 +11,18 @@
 
   <h2>O problema</h2>
   <p>
-    A entrada de novos colaboradores e os pedidos internos de RH hoje se perdem entre
-    e-mails e mensagens avulsas. Sem uma fila visível, ninguém sabe o que já foi
-    respondido, quem ficou responsável nem o que está prestes a estourar o prazo.
+    A entrada de novos colaboradores e os pedidos internos de RH se perdiam entre
+    e-mails e mensagens avulsas. Sem uma fila visível, ninguém sabia o que já foi
+    respondido, quem ficou responsável nem o que estava prestes a estourar o prazo.
   </p>
 
   <h2>O que o sistema faz</h2>
-  <p>
-    Reúne os chamados num painel único, cada um com status, prioridade e responsável.
-    As próximas entregas incluem atribuição automática de responsável e aviso quando
-    um chamado muda de estado.
-  </p>
+  <ul>
+    <li>Abre chamados com validação e aviso de privacidade (LGPD).</li>
+    <li>Lista a fila ordenada por prioridade, com filtros por status e prioridade.</li>
+    <li>Avança o status (Aberto → Em andamento → Concluído) e registra o histórico.</li>
+    <li>Calcula indicadores de atendimento, como o tempo médio (MTTR).</li>
+  </ul>
 
   <h2>Como saberemos se deu certo</h2>
   <ul class="metas">
@@ -34,14 +36,11 @@
     </li>
   </ul>
 
-  <h2>Entrega desta semana</h2>
-  <p>
-    Abertura e listagem de chamados com controle de status — aberto, em andamento e
-    concluído — e filtro por prioridade.
-  </p>
+  <h2>Equipe</h2>
+  <p>Guilherme Souto (PO/CIO), Raiza Antoneli (Dev Lead), Enrico do Carmo (QA/Auditoria), Luana Alcântara (UX/UI) e Marcus Aurélios (DevOps).</p>
 
   <p class="nota">
-    Projeto acadêmico da Fatec. O código está em desenvolvimento e a fila de chamados
-    ainda usa dados de exemplo.
+    Projeto acadêmico da Fatec. A fila de chamados usa dados fictícios. Veja a página
+    <a href="{{ url_for('governanca') }}">Governança</a> para a documentação.
   </p>
 {% endblock %}
