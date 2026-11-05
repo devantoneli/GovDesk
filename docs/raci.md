@@ -1,21 +1,22 @@
-# Matriz RACI do Projeto 
+# Matriz RACI — GovDesk
 
-  
+**R** = Responsible (executa) · **A** = Accountable (responde pelo resultado; **um único A por atividade**) · **C** = Consulted · **I** = Informed
 
-| Atividade | Product Owner/CIO (Guilherme Souto) | Dev Lead (Raiza Antoneli) | QA/Auditoria (Enrico do Carmo) | UX/UI Designer (Luana Alcântara) | DevOps / infraestrutura (Marcus Aurélios)
+| Atividade | PO / CIO<br>Guilherme Souto | Dev Lead<br>Raiza Antoneli | QA / Auditoria<br>Enrico do Carmo | UX/UI<br>Luana Alcântara | DevOps<br>Marcus Aurélios |
+|-----------|:---:|:---:|:---:|:---:|:---:|
+| Definir escopo e priorizar o backlog | A/R | C | C | C | I |
+| Mapear o processo de chamados (AS-IS e TO-BE em BPMN) | A/R | C | C | C | I |
+| Desenhar fluxos e protótipos das telas | C | C | I | A/R | I |
+| Desenvolver o sistema (rotas, validação, status, indicadores) | C | A/R | C | C | I |
+| Conferir fidelidade visual e acessibilidade | I | R | C | A/R | I |
+| Testar e dar o go/no-go da entrega | I | R | A/R | C | I |
+| Auditar conformidade LGPD e validações | C | C | A/R | I | C |
+| Configurar ambiente, execução e backup | I | C | I | I | A/R |
+| Aprovar solicitações de mudança | A/R | C | C | I | C |
+| Encerrar o projeto e registrar o aceite | A/R | C | C | I | I |
 
-|-----------|-------------------|----------|--------------|----------------|------------------------
+## Regras de leitura
 
-| Mapear processos de RH e definir módulos do sistema | A/R | C | C | C | I |
-
-| Modelar arquitetura multi-tenant e segurança de dados de clientes | C | A/R | C | I | C |
-
-| Projetar dashboards e fluxos de diagnóstico para os clientes | C | C | I | A/R |  I|
-
-| Auditar conformidade e validações de rotinas de RH | C | C | A/R | I | I |
-
-| Configurar isolamento de ambientes e rotinas de backup dos clientes | I | C | I | I | A/R |
-
-  
-
-R = Responsible, A = Accountable, C = Consulted, I = Informed 
+- Cada linha tem exatamente um **A** (conferido na revisão final do QA).
+- Os cinco papéis das colunas são as **raias** do processo em [processo-chamados.md](processo-chamados.md); se um papel mudar aqui, o BPMN deve mudar junto (revisão cruzada a cada entrega).
+- O **Product Owner** é quem aprova mudanças e dá o aceite final do projeto.

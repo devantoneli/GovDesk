@@ -35,7 +35,7 @@ Adicionar novos campos ao cadastro de funcionários, como telefone, endereço, c
 ## Por que 
 Permitir que o sistema armazene informações necessárias para melhorar o gerenciamento dos funcionários e facilitar os processos administrativos do RH.
 ## Quem solicita 
-Controle de Qualidade / Auditório - Enrico do Carmo
+QA / Auditoria - Enrico do Carmo
 ## Quem aprova 
 Dono do Produto / CIO - Guilherme Souto
 ## Impacto / Risco 
@@ -49,7 +49,7 @@ Criar um novo relatório que apresente informações agregadas sobre os funcion�
 ## Por que 
 Facilitar a análise das informações do quadro de funcionários e auxiliar o RH na tomada de decisões administrativas.
 ## Quem solicita 
-Controle de Qualidade / Auditório - Enrico do Carmo
+QA / Auditoria - Enrico do Carmo
 ## Quem aprova 
 Dono do Produto / CIO - Guilherme Souto
 ## Impacto / Risco 
@@ -63,8 +63,22 @@ Implementar um registro de auditoria para armazenar informações sobre alteraç
 ## Por que 
 Aumentar a rastreabilidade das operações realizadas no sistema e permitir a identificação de alterações indevidas ou não autorizadas.
 ## Quem solicita 
-Controle de Qualidade / Auditório - Enrico do Carmo
+QA / Auditoria - Enrico do Carmo
 ## Quem aprova 
 Dono do Produto / CIO - Guilherme Souto
 ## Impacto / Risco 
 O armazenamento dos registros de auditoria pode aumentar o volume de dados do sistema. Também existe o risco de registros incompletos. Serão realizados testes de inclusão, alteração e exclusão de dados para verificar se as operações estão sendo registradas corretamente.
+
+------------------------------------------------
+
+## 6. Persistência dos chamados em banco de dados
+## O que muda 
+Substituir a lista em memória por um banco SQLite, mantendo o histórico de cada chamado entre reinícios do servidor.
+## Por que 
+Hoje reiniciar o servidor apaga os chamados, o que impede o uso real e a rastreabilidade (risco residual do termo de encerramento).
+## Quem solicita 
+QA / Auditoria - Enrico do Carmo
+## Quem aprova 
+Dono do Produto / CIO - Guilherme Souto
+## Impacto / Risco 
+Possível perda de dados na migração e novo ponto de proteção da LGPD (retenção e backup). Serão feitos testes de gravação e leitura e rotina de backup antes da implantação.
