@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block titulo %}Indicadores{% endblock %}
+
+{% block content %}
+  <h1 class="titulo-pagina">Indicadores</h1>
+  <p class="subtitulo">Calculados em tempo real a partir da fila. Medem o objetivo do PETI: atender os chamados de RH em menos de 24 horas.</p>
+
+  <div class="kpis">
+    <div class="cartao kpi {{ 'bom' if i.mttr_ok else 'alerta' if i.mttr is not none }}">
+      <div class="rotulo">Tempo médio de atendimento (MTTR)</div>
+      <div class="valor">{% if i.mttr is not none %}{{ '%.1f'|format(i.mttr) }}<small> h</small>{% else %}—{% endif %}</div>
+      <p class="nota-kpi">
+        Meta: menos de {{ meta }} h.
+        {% if i.mttr is none %}Ainda não há chamados concluídos.{% elif i.mttr_ok %}Meta atingida.{% else %}Meta não atingida.{% endif %}
+      </p>
+    </div>
+    <div class="cartao kpi">
+      <div class="rotulo">Taxa de conclusão</div>
+      <div class="valor">{{ i.taxa_conclusao }}<small> %</small></div>
+      <p class="nota-kpi">{{ i.por_status['Concluído'] }} de {{ i.total }} chamados concluídos.</p>
+    </div>
+    <div class="cartao kpi {{ 'alerta' if i.fora_prazo }}">
+      <div class="rotulo">Pendentes há mais de 24 h</div>
+      <div class="valor">{{ i.fora_prazo }}</div>
+      <p class="nota-kpi">De {{ i.pendentes }} chamados ainda não concluídos.</p>
+    </div>
+    <div class="cartao kpi {{ 'alerta' if i.alta_pendente }}">
+      <div class="rotulo">Prioridade alta pendente</div>
+      <div class="valor">{{ i.alta_pendente }}</div>
+      <p class="nota-kpi">Devem ser atendidos primeiro.</p>
+    </div>
+  </div>
+
+  <div class="duas-col">
+    <section class="cartao" aria-labelledby="h-status">
+      <h2 id="h-status">Chamados por status</h2>
+      <ul class="barras">
+        {% for s in status_lista %}
+          {% set n = i.por_status[s] %}
+          <li>
+            <div class="barra-rotulo"><span>{{ s }}</span><strong>{{ n }}</strong></div>
+            <div class="barra-trilho"><div class="barra-preench {{ s | slug }}" style="width: {{ (100 * n / i.total) if i.total else 0 }}%"></div></div>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section class="cartao" aria-labelledby="h-prio">
+      <h2 id="h-prio">Chamados por prioridade</h2>
+      <ul class="barras">
+        {% for p in prioridade_lista %}
+          {% set n = i.por_prioridade[p] %}
+          <li>
+            <div class="barra-rotulo"><span>{{ p }}</span><strong>{{ n }}</strong></div>
+            <div class="barra-trilho"><div class="barra-preench {{ p | slug }}" style="width: {{ (100 * n / i.total) if i.total else 0 }}%"></div></div>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
+
+  <p class="nota">
+    O MTTR considera apenas chamados concluídos (do registro à conclusão). A taxa de resolução no primeiro contato (FCR)
+    do PETI depende de registrar retornos do solicitante e está no backlog futuro.
+  </p>
+{% endblock %}

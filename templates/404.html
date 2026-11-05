@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block titulo %}Página não encontrada{% endblock %}
+
+{% block content %}
+  <h1 class="titulo-pagina">Página não encontrada</h1>
+  <p class="subtitulo">O endereço que você tentou abrir não existe ou o chamado foi removido.</p>
+  <p><a class="btn" href="{{ url_for('index') }}">Voltar à fila de chamados</a></p>
+{% endblock %}
